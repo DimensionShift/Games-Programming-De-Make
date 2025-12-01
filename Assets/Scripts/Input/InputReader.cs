@@ -36,9 +36,14 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     {
         Sprint = context.performed;
     }
-    
+
     public void OnJump(InputAction.CallbackContext context)
     {
         Jump = context.performed;
+    }
+
+    void OnApplicationFocus(bool focus)
+    {
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
