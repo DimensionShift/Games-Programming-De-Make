@@ -1,0 +1,54 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+
+public class Throwing : MonoBehaviour
+{
+    [SerializeField] Transform ballHoldTransform;
+
+    Camera fpsCamera;
+    GameObject ball;
+
+    bool hasBall;
+
+    void Start()
+    {
+        fpsCamera = Camera.main;
+        //hasBall = true; // Enable this if starting with the ball
+    }
+
+    void Update()
+    {
+        if (Mouse.current.rightButton.wasPressedThisFrame)
+        {
+            RaycastHit hit;
+
+            if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, Mathf.Infinity))
+            {
+                Debug.Log(hit.collider.name);
+
+                if (hit.collider.gameObject.name == "Ball")
+                {
+                    ball = hit.collider.gameObject;
+                    ball.transform.parent = ballHoldTransform;
+
+                    Destroy(ball.GetComponent<Rigidbody>());
+                    ball.transform.localPosition = Vector3.zero;
+                    ball.transform.localRotation = Quaternion.identity;
+
+                    hasBall = true;
+                }
+            }
+        }
+
+        if (hasBall && Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            Rigidbody ballRb = ball.AddComponent<Rigidbody>();
+            ball.transform.parent = null;
+
+            ballRb.linearVelocity = Vector3.zero;
+            ballRb.AddForce(fpsCamera.transform.forward * 30f, ForceMode.Impulse);
+
+            hasBall = false;
+        }
+    }
+}
