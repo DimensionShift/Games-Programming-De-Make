@@ -13,12 +13,13 @@ public class Throwing : MonoBehaviour
     void Start()
     {
         fpsCamera = Camera.main;
-        //hasBall = true; // Enable this if starting with the ball
+        hasBall = true; // Enable this if starting with the ball
+        ball = GameObject.Find("Ball");
     }
 
     void Update()
     {
-        if (Mouse.current.rightButton.wasPressedThisFrame)
+        if (!hasBall && Mouse.current.rightButton.wasPressedThisFrame) // Temp code, will be setup using the input system
         {
             RaycastHit hit;
 
@@ -40,13 +41,14 @@ public class Throwing : MonoBehaviour
             }
         }
 
-        if (hasBall && Mouse.current.leftButton.wasPressedThisFrame)
+        if (hasBall && Mouse.current.leftButton.wasPressedThisFrame) // Temp code, will be setup using the input system
         {
             Rigidbody ballRb = ball.AddComponent<Rigidbody>();
             ball.transform.parent = null;
 
             ballRb.linearVelocity = Vector3.zero;
             ballRb.AddForce(fpsCamera.transform.forward * 30f, ForceMode.Impulse);
+            ballRb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
 
             hasBall = false;
         }
