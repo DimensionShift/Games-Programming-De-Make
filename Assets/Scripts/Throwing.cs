@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Throwing : MonoBehaviour
 {
+    [SerializeField] float throwForce = 30f;
     [SerializeField] Transform ballHoldTransform;
 
     Camera fpsCamera;
@@ -47,7 +48,7 @@ public class Throwing : MonoBehaviour
             ball.transform.parent = null;
 
             ballRb.linearVelocity = Vector3.zero;
-            ballRb.AddForce(fpsCamera.transform.forward * 30f, ForceMode.Impulse);
+            ballRb.AddForce(fpsCamera.transform.forward * throwForce, ForceMode.Impulse);
             ballRb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
 
             hasBall = false;
