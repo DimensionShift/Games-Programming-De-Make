@@ -1,19 +1,21 @@
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Health : MonoBehaviour
+public abstract class Health : MonoBehaviour
 {
-    [SerializeField] Slider healthBarSlider;
-    [SerializeField] int maxHealth = 100;
+    [SerializeField] protected int maxHealth = 100;
+    protected int currentHealth;
 
-    int currentHealth;
-
-    void Start()
+    protected virtual void Start()
     {
         SetHealthToMax();
     }
 
-    public void TakeDamage(int amount)
+    protected void SetHealthToMax()
+    {
+        currentHealth = maxHealth;
+    }
+
+    public virtual void TakeDamage(int amount)
     {
         currentHealth -= amount;
 
@@ -23,20 +25,5 @@ public class Health : MonoBehaviour
         }
     }
 
-    void Die()
-    {
-        Destroy(gameObject);
-    }
-
-    void UpdateHealthbar()
-    {
-        healthBarSlider.maxValue = maxHealth;
-        healthBarSlider.value = currentHealth;
-    }
-
-    void SetHealthToMax()
-    {
-        currentHealth = maxHealth;
-        UpdateHealthbar();
-    }
+    protected abstract void Die();
 }

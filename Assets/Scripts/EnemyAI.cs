@@ -72,8 +72,6 @@ public class EnemyAI : MonoBehaviour
         if (!enemyAgent.hasPath)
         {
             Vector3 randomPosition = new Vector3(Random.Range(-patrolPoints.x, patrolPoints.x), 0, Random.Range(-patrolPoints.z, patrolPoints.z));
-            Debug.Log(randomPosition);
-
             enemyAgent.SetDestination(randomPosition);
         }
 
