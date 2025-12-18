@@ -1,5 +1,4 @@
 using System.Collections;
-using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -78,7 +77,8 @@ public class EnemyAI : MonoBehaviour
         if (Vector3.Distance(transform.position, player.transform.position) < 20f)
         {
             enemyAgent.ResetPath();
-            currentState = States.DetectPlayer;
+            // currentState = States.DetectPlayer;
+            currentState = States.Attack;
         }
     }
 
@@ -93,22 +93,26 @@ public class EnemyAI : MonoBehaviour
         Debug.Log("Enemy has entered Attack State");
 
         //Attack Logic here
-        if (hasBall)
-        {
-            ball.transform.parent = null;
-            ball.GetComponent<Rigidbody>().isKinematic = false;
-            ball.GetComponent<Rigidbody>().MovePosition(player.transform.position * 10f * Time.deltaTime);
+        // if (hasBall)
+        // {
+        //     ball.transform.parent = null;
+        //     ball.GetComponent<Rigidbody>().isKinematic = false;
+        //     ball.GetComponent<Rigidbody>().MovePosition(player.transform.position * 10f * Time.deltaTime);
             
-            hasBall = false;
-            currentState = States.Run;
+        //     hasBall = false;
+        //     currentState = States.Run;
 
-            Debug.Log("Enemy has peformed their attack");
-        }
-        else
-        {
-            Debug.Log("Can't attack, switching to ball search state");
-            currentState = States.BallSearch;
-        }
+        //     Debug.Log("Enemy has peformed their attack");
+        // }
+        // else
+        // {
+        //     Debug.Log("Can't attack, switching to ball search state");
+        //     currentState = States.BallSearch;
+        // }
+
+        ball.transform.parent = null;
+        ball.GetComponent<Rigidbody>().isKinematic = false;
+        ball.GetComponent<Rigidbody>().MovePosition(player.transform.position * 10f * Time.deltaTime);
     }
 
     void Run()
