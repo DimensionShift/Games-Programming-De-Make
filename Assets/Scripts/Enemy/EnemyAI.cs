@@ -8,34 +8,29 @@ enum States
     DetectPlayer,
     Attack,
     Run,
-    BallSearch
 }
 
 public class EnemyAI : MonoBehaviour
 {
     [SerializeField] float moveSpeed;
     [SerializeField] float runSpeed;
-    [SerializeField] States startingState;
     [SerializeField] Vector3 patrolPoints;
+    [SerializeField] GameObject ballPrefab;
     [SerializeField] Transform ballHoldTransform;
 
     States currentState;
     NavMeshAgent enemyAgent;
     Player player;
-    GameObject ball;
 
-    public bool hasBall;
+    Coroutine currentCoRoutine;
 
     void Start()
     {
         enemyAgent = GetComponent<NavMeshAgent>();
         player = Player.Instance;
         
-        currentState = startingState;
+        currentState = States.Patrol;
         enemyAgent.speed = moveSpeed;
-
-        ball = GameObject.Find("Enemy Ball");
-        hasBall = true;
     }
 
     void Update()
@@ -45,14 +40,8 @@ public class EnemyAI : MonoBehaviour
             case States.Patrol:
                 Patrol();
                 break;
-            case States.DetectPlayer:
-                DetectPlayer();
-                break;
             case States.Attack:
                 Attack();
-                break;
-            case States.BallSearch:
-                BallSearch();
                 break;
             case States.Run:
                 Run();
@@ -77,90 +66,51 @@ public class EnemyAI : MonoBehaviour
         if (Vector3.Distance(transform.position, player.transform.position) < 20f)
         {
             enemyAgent.ResetPath();
-            // currentState = States.DetectPlayer;
-            currentState = States.Attack;
-        }
-    }
 
-    void DetectPlayer()
-    {
-        Debug.Log("Enemy has entered Detect Player State");
-        StartCoroutine(PlayerDetectedRoutine());
+            if (currentCoRoutine == null)
+            {
+                currentCoRoutine = StartCoroutine(PlayerDetectedRoutine());
+            }
+        }
     }
 
     void Attack()
     {
         Debug.Log("Enemy has entered Attack State");
 
-        //Attack Logic here
-        // if (hasBall)
-        // {
-        //     ball.transform.parent = null;
-        //     ball.GetComponent<Rigidbody>().isKinematic = false;
-        //     ball.GetComponent<Rigidbody>().MovePosition(player.transform.position * 10f * Time.deltaTime);
-            
-        //     hasBall = false;
-        //     currentState = States.Run;
+        // Attack Logic
+        GameObject ball = Instantiate(ballPrefab, ballHoldTransform.position, Quaternion.identity);
 
-        //     Debug.Log("Enemy has peformed their attack");
-        // }
-        // else
-        // {
-        //     Debug.Log("Can't attack, switching to ball search state");
-        //     currentState = States.BallSearch;
-        // }
-
-        ball.transform.parent = null;
-        ball.GetComponent<Rigidbody>().isKinematic = false;
-        ball.GetComponent<Rigidbody>().MovePosition(player.transform.position * 10f * Time.deltaTime);
+        currentState = States.Run;
     }
 
     void Run()
     {
         Debug.Log("Enemy has entered Run State");
+        enemyAgent.ResetPath();
         enemyAgent.speed = runSpeed;
 
-        if (!enemyAgent.hasPath)
-        {
-            Vector3 randomPosition = new Vector3(Random.Range(-patrolPoints.x, patrolPoints.x), 0, Random.Range(-patrolPoints.z, patrolPoints.z));
-            Debug.Log(randomPosition);
+        Vector3 randomPosition = new Vector3(Random.Range(-patrolPoints.x, patrolPoints.x), 0, Random.Range(-patrolPoints.z, patrolPoints.z));
+        enemyAgent.SetDestination(randomPosition);
 
-            enemyAgent.SetDestination(randomPosition);
-        }
-
-        if (!hasBall && Vector3.Distance(transform.position, player.transform.position) > 20f)
-        {
-            currentState = States.BallSearch;
-        }
-    }
-
-    void BallSearch()
-    {
-        Debug.Log("Enemy has entered Ball Search State");
-        enemyAgent.speed = runSpeed;
-
-        // Find ball logic
-        Vector3 ballPosition = GameObject.Find("Enemy Ball").transform.position;
-
-        if (!enemyAgent.hasPath)
-        {
-            enemyAgent.SetDestination(ballPosition);
-        }
-
-        if (hasBall && Vector3.Distance(transform.position, player.transform.position) < 20f)
-        {
-            currentState = States.DetectPlayer;
-        }
-        else if (hasBall && Vector3.Distance(transform.position, player.transform.position) > 20f)
-        {
-            currentState = States.Patrol;
-        }
+        currentState = States.Patrol;
     }
 
     IEnumerator PlayerDetectedRoutine()
     {
         transform.LookAt(player.transform);
-        yield return new WaitForSeconds(1);
-        currentState = States.Attack;
+        
+        // Add some form of indicator that the player has been detected --> '!'
+        yield return new WaitForSeconds(2);
+
+        if (Vector3.Distance(transform.position, player.transform.position) > 20f)
+        {
+            // Add some form of indicator that the player has been lost --> '?'
+            currentState = States.Patrol;
+        }
+        else
+        {
+            currentState = States.Attack;
+        }
     }
 }
