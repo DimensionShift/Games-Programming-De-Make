@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4858004144432651712}
   - component: {fileID: 4020190431162722795}
   - component: {fileID: 8655908502130241671}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,3 +122,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitVFX: {fileID: 0}
+  ballDamage: 20

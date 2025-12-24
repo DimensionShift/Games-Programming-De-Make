@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4020190431162722795}
   - component: {fileID: -8116430552728109058}
   - component: {fileID: 5754872454335933604}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -149,5 +149,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0759ded7a42d2384f91747b6ff6f122b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitVFX: {fileID: 0}
   ballDamage: 20
