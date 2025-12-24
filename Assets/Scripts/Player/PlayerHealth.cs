@@ -22,11 +22,12 @@ public class PlayerHealth : Health
     public override void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
-        // Add screen shake upon the player taking a hit.
+        UpdateHealthbar();
     }
 
     protected override void Die()
     {
         // To Implement once enemies can attack
+        Debug.Log("Player has died");
     }
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -17,12 +16,14 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] Vector3 patrolPoints;
     [SerializeField] GameObject ballPrefab;
     [SerializeField] Transform ballHoldTransform;
+    [SerializeField] float timeBeforeAttacking = 5f;
 
     States currentState;
     NavMeshAgent enemyAgent;
     Player player;
 
-    Coroutine currentCoRoutine;
+    bool canAttack = true;
+    float timer;
 
     void Start()
     {
@@ -31,6 +32,8 @@ public class EnemyAI : MonoBehaviour
         
         currentState = States.Patrol;
         enemyAgent.speed = moveSpeed;
+
+        timer = timeBeforeAttacking;
     }
 
     void Update()
@@ -56,6 +59,7 @@ public class EnemyAI : MonoBehaviour
     {
         Debug.Log("Enemy has entered Patrol State");
         enemyAgent.speed = moveSpeed;
+        canAttack = true;
 
         if (!enemyAgent.hasPath)
         {
@@ -66,10 +70,14 @@ public class EnemyAI : MonoBehaviour
         if (Vector3.Distance(transform.position, player.transform.position) < 20f)
         {
             enemyAgent.ResetPath();
+            transform.LookAt(player.transform);
 
-            if (currentCoRoutine == null)
+            timer -= Time.deltaTime;
+
+            if (timer <= 0)
             {
-                currentCoRoutine = StartCoroutine(PlayerDetectedRoutine());
+                currentState = States.Attack;
+                timer = timeBeforeAttacking;
             }
         }
     }
@@ -79,38 +87,36 @@ public class EnemyAI : MonoBehaviour
         Debug.Log("Enemy has entered Attack State");
 
         // Attack Logic
-        GameObject ball = Instantiate(ballPrefab, ballHoldTransform.position, Quaternion.identity);
+        if (canAttack)
+        {
+            GameObject ball = Instantiate(ballPrefab, ballHoldTransform.position, Quaternion.identity);
+            Vector3 distanceToPlayer = (player.transform.position + (Vector3.up * 1f) - ball.transform.position).normalized;
+            ball.GetComponent<Rigidbody>().linearVelocity = distanceToPlayer * 50f;
 
-        currentState = States.Run;
+            Destroy(ball, 5);
+            canAttack = false;
+        }
+        else
+        {
+            currentState = States.Run;
+        }
     }
 
     void Run()
     {
         Debug.Log("Enemy has entered Run State");
-        enemyAgent.ResetPath();
         enemyAgent.speed = runSpeed;
 
-        Vector3 randomPosition = new Vector3(Random.Range(-patrolPoints.x, patrolPoints.x), 0, Random.Range(-patrolPoints.z, patrolPoints.z));
-        enemyAgent.SetDestination(randomPosition);
-
-        currentState = States.Patrol;
-    }
-
-    IEnumerator PlayerDetectedRoutine()
-    {
-        transform.LookAt(player.transform);
-        
-        // Add some form of indicator that the player has been detected --> '!'
-        yield return new WaitForSeconds(2);
-
-        if (Vector3.Distance(transform.position, player.transform.position) > 20f)
+        if (!enemyAgent.hasPath)
         {
-            // Add some form of indicator that the player has been lost --> '?'
-            currentState = States.Patrol;
+            Vector3 randomPosition = new Vector3(Random.Range(-patrolPoints.x, patrolPoints.x), 0, Random.Range(-patrolPoints.z, patrolPoints.z));
+            enemyAgent.SetDestination(randomPosition);
         }
-        else
+
+        if (!enemyAgent.pathPending && enemyAgent.remainingDistance < enemyAgent.stoppingDistance)
         {
-            currentState = States.Attack;
+            enemyAgent.ResetPath();
+            currentState = States.Patrol;
         }
     }
 }
