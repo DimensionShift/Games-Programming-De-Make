@@ -4,28 +4,68 @@ public class PuzzleCube : MonoBehaviour
 {
     [SerializeField] int orderInSequence;
     [SerializeField] Material hitMaterial;
+    [SerializeField] Color cubeColour;
+    [SerializeField] float lerpDuration = 1f;
 
     PuzzleManager puzzleManager;
     MeshRenderer meshRenderer;
     Material defaultMaterial;
 
+    float elapsedTime = 0f;
+    bool isHit;
+    bool isLerping;
+
     void Start()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
         puzzleManager = PuzzleManager.Instance;
+        meshRenderer = GetComponent<MeshRenderer>();
+
         defaultMaterial = meshRenderer.material;
+        defaultMaterial.color = Color.black;
+
+        isHit = false;
+        isLerping = false;
+    }
+
+    void Update()
+    {
+        if (isHit && isLerping)
+        {
+            LerpCubeColor();
+        }
     }
 
     void OnCollisionEnter(Collision collision)
     {
-        if (puzzleManager.isPuzzleActive && collision.gameObject.CompareTag("PlayerBall"))
+        if (puzzleManager.isPuzzleActive && !isHit && collision.gameObject.CompareTag("PlayerBall"))
         {
+            isHit = true;
             puzzleManager.CubeHit(orderInSequence);
-            meshRenderer.material = hitMaterial;
+            isLerping = true;
         }
     }
-    public void ResetMaterial()
+
+    public void ResetCube()
     {
+        defaultMaterial.color = Color.black;
         meshRenderer.material = defaultMaterial;
+        elapsedTime = 0f;
+        isHit = false;
+    }
+
+    void LerpCubeColor()
+    {
+        elapsedTime += Time.deltaTime;
+
+        if (elapsedTime < lerpDuration)
+        {
+            float tempValue = elapsedTime / lerpDuration;
+            defaultMaterial.color = Color.Lerp(Color.black, cubeColour, tempValue);
+        }
+        else
+        {
+            isLerping = false;
+            meshRenderer.material = hitMaterial;
+        }
     }
 }

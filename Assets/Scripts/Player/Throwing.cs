@@ -48,6 +48,7 @@ public class Throwing : MonoBehaviour
             ball.transform.parent = null;
 
             ballRb.linearVelocity = Vector3.zero;
+            ballRb.mass = 2f;
             ballRb.AddForce(fpsCamera.transform.forward * throwForce, ForceMode.Impulse);
             ballRb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
 

@@ -34,7 +34,7 @@ public class PuzzleManager : MonoBehaviour
         {
             if (playerHitSequence[i] != puzzleSolutionSequence[i])
             {
-                StartCoroutine(RestartPuzzle());
+                RestartPuzzle();
                 return;
             }
         }
@@ -47,16 +47,14 @@ public class PuzzleManager : MonoBehaviour
         }
     }
 
-    IEnumerator RestartPuzzle()
+    void RestartPuzzle()
     {
         Debug.Log("Puzzle Restarted");
         playerHitSequence.Clear();
 
-        yield return null;
-
         foreach(GameObject gameObject in puzzleGameObjects)
         {
-            gameObject.GetComponent<PuzzleCube>().ResetMaterial();
+            gameObject.GetComponent<PuzzleCube>().ResetCube();
         }
     }
 }

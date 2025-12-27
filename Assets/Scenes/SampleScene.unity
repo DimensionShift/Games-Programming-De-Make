@@ -495,7 +495,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e4720b779ee8bc4e846fce49d95efd5, type: 2}
+  - {fileID: 2100000, guid: f4b7b595bc6967545a9c39d72e77e51c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -554,6 +554,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orderInSequence: 4
   hitMaterial: {fileID: 2100000, guid: c3c93aa825a7e9c459061f63e240d743, type: 2}
+  cubeColour: {r: 1, g: 1, b: 0, a: 1}
+  lerpDuration: 1
 --- !u!1 &261986977
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,7 +1154,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7c79bc798cd6cfb40b80aa63a74b6a61, type: 2}
+  - {fileID: 2100000, guid: f4b7b595bc6967545a9c39d72e77e51c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1211,6 +1213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orderInSequence: 1
   hitMaterial: {fileID: 2100000, guid: 826dea2939a9bd3448636e27347673dc, type: 2}
+  cubeColour: {r: 0, g: 1, b: 0, a: 1}
+  lerpDuration: 1
 --- !u!1001 &725273704
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6198,7 +6202,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 63804c651baae7444be1821a2a50bec2, type: 2}
+  - {fileID: 2100000, guid: f4b7b595bc6967545a9c39d72e77e51c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6257,6 +6261,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orderInSequence: 2
   hitMaterial: {fileID: 2100000, guid: ba626f8655c07bf459dc911d08b2efd0, type: 2}
+  cubeColour: {r: 1, g: 0, b: 0, a: 1}
+  lerpDuration: 1
 --- !u!1 &1134723732
 GameObject:
   m_ObjectHideFlags: 0
@@ -7057,7 +7063,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b602512fc2ea85643af8585939e02bea, type: 2}
+  - {fileID: 2100000, guid: f4b7b595bc6967545a9c39d72e77e51c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7116,6 +7122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orderInSequence: 3
   hitMaterial: {fileID: 2100000, guid: 900efa0fd502c634a8f6045d0bb3e319, type: 2}
+  cubeColour: {r: 0, g: 0, b: 1, a: 1}
+  lerpDuration: 1
 --- !u!1 &1545815344
 GameObject:
   m_ObjectHideFlags: 0
