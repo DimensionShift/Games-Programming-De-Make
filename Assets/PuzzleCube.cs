@@ -37,7 +37,7 @@ public class PuzzleCube : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (puzzleManager.isPuzzleActive && !isHit && collision.gameObject.CompareTag("PlayerBall"))
+        if (!puzzleManager.isPuzzleSolved && !isHit && collision.gameObject.CompareTag("PlayerBall"))
         {
             isHit = true;
             puzzleManager.CubeHit(orderInSequence);

@@ -9,9 +9,8 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] List<int> puzzleSolutionSequence = new List<int>();
     [SerializeField] GameObject[] puzzleGameObjects;
 
+    public bool isPuzzleSolved {get ; private set;} = false;
     List<int> playerHitSequence = new List<int>();
-
-    public bool isPuzzleActive = true;
 
     void Awake()
     {
@@ -24,6 +23,11 @@ public class PuzzleManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void Start()
+    {
+        isPuzzleSolved = false;
     }
 
     public void CubeHit(int hitCube)
@@ -43,7 +47,7 @@ public class PuzzleManager : MonoBehaviour
         {
             // door open logic
             Debug.Log("Puzzle Solved");
-            isPuzzleActive = false;
+            isPuzzleSolved = true;
         }
     }
 
@@ -57,4 +61,6 @@ public class PuzzleManager : MonoBehaviour
             gameObject.GetComponent<PuzzleCube>().ResetCube();
         }
     }
+
+    public bool PuzzleSolved => isPuzzleSolved;
 }
