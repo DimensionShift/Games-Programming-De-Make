@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5067657928488910171}
   - component: {fileID: 4799908083278654760}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Green Puzzle Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 5223957202367928621}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.5, y: 4.5, z: 15.5}
+  m_LocalPosition: {x: 20, y: 5, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -149,7 +149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5472132104177138986}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 1682661699712925456}
   - component: {fileID: 5651936690774304009}
   m_Layer: 0
-  m_Name: Cube (1)
+  m_Name: Red Puzzle Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,7 +189,7 @@ Transform:
   m_GameObject: {fileID: 6616868478099769302}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 23.5, y: 4.5, z: -15.5}
+  m_LocalPosition: {x: 20, y: 4.5, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 7428825456222560808}
   - component: {fileID: 3121112029845202595}
   m_Layer: 0
-  m_Name: Cube (2)
+  m_Name: Blue Puzzle Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -314,7 +314,7 @@ Transform:
   m_GameObject: {fileID: 6744985481570277267}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.5, y: 4.5, z: -15.5}
+  m_LocalPosition: {x: -20, y: 4.5, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 7763804376887312616}
   - component: {fileID: 3115906378712250231}
   m_Layer: 0
-  m_Name: Cube (3)
+  m_Name: Yellow Puzzle Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -439,7 +439,7 @@ Transform:
   m_GameObject: {fileID: 8631310285425883402}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -23.5, y: 4.5, z: 15.5}
+  m_LocalPosition: {x: -20, y: 4.5, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

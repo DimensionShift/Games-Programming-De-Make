@@ -263,7 +263,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -366,9 +366,11 @@ GameObject:
   m_Component:
   - component: {fileID: 7101406491057741744}
   - component: {fileID: 1561670954984186956}
+  - component: {fileID: 6776009155714762359}
   - component: {fileID: 1727629390767571799}
   - component: {fileID: 8699465908351057849}
   - component: {fileID: 2112163888849105009}
+  - component: {fileID: 3766966324370852114}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -418,6 +420,18 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &6776009155714762359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4832352669003183047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b77ae01f201e714ca3007b2ee953e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1727629390767571799
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,7 +470,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 65
-  jumpHeight: 1.2
+  jumpHeight: 2
 --- !u!114 &2112163888849105009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -469,7 +483,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf384e3e6ea45542b033fbb78d036d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  throwForce: 100
   ballHoldTransform: {fileID: 5310822203197858904}
+--- !u!114 &3766966324370852114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4832352669003183047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f89e5b2dcbbaf444dbc167944d236cd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  healthbarSlider: {fileID: 0}
 --- !u!1 &8285559318220701677
 GameObject:
   m_ObjectHideFlags: 0
@@ -672,6 +702,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 8655908502130241671, guid: 57f27b8bbcca21b4a98aa35400660f39, type: 3}
+      propertyPath: hitVFX
+      value: 
+      objectReference: {fileID: 6677932532846146009, guid: 14b4c5a2135f7a7419aead351f5cdd15, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
