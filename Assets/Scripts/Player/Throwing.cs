@@ -1,58 +1,152 @@
+using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Throwing : MonoBehaviour
 {
-    [SerializeField] float throwForce = 30f;
-    [SerializeField] Transform ballHoldTransform;
+    [SerializeField] Transform leftHandObjectHoldTransform;
+    [SerializeField] Transform rightHandObjectHoldTransform;
+    [SerializeField] Transform leftArm;
+    [SerializeField] Transform rightArm;
+    [SerializeField] float throwForce = 50f;
 
     Camera fpsCamera;
-    GameObject ball;
+    public GameObject leftHandHeldObject;
+    public GameObject rightHandHeldObject;
 
-    bool hasBall;
+    float defaultArmLength;
+    public bool hasObjectInLeftHand;
+    public bool hasObjectInRightHand;
 
     void Start()
     {
         fpsCamera = Camera.main;
-        hasBall = true; // Enable this if starting with the ball
-        ball = GameObject.Find("Ball");
+        defaultArmLength = leftArm.localScale.z;
+        hasObjectInRightHand = false;
+        hasObjectInLeftHand = false;
     }
 
     void Update()
     {
-        if (!hasBall && Mouse.current.rightButton.wasPressedThisFrame) // Temp code, will be setup using the input system
+        if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            RaycastHit hit;
-
-            if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, Mathf.Infinity))
+            if (!hasObjectInLeftHand)
             {
-                Debug.Log(hit.collider.name);
+                // Grab an object with the left hand
+                RaycastHit hit;
 
-                if (hit.collider.gameObject.name == "Ball")
+                if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, Mathf.Infinity))
                 {
-                    ball = hit.collider.gameObject;
-                    ball.transform.parent = ballHoldTransform;
-
-                    Destroy(ball.GetComponent<Rigidbody>());
-                    ball.transform.localPosition = Vector3.zero;
-                    ball.transform.localRotation = Quaternion.identity;
-
-                    hasBall = true;
+                    if (hit.collider.gameObject.CompareTag("PlayerBall"))
+                    {
+                        StartCoroutine(StretchArm(hit.collider.gameObject, leftArm, true));
+                        hasObjectInLeftHand = true;
+                    }
                 }
+            }
+            else if (hasObjectInLeftHand)
+            {
+                // Throw held object
+                ThrowObject(leftHandHeldObject);
+                hasObjectInLeftHand = false;
             }
         }
 
-        if (hasBall && Mouse.current.leftButton.wasPressedThisFrame) // Temp code, will be setup using the input system
+        if (Mouse.current.rightButton.wasPressedThisFrame)
         {
-            Rigidbody ballRb = ball.AddComponent<Rigidbody>();
-            ball.transform.parent = null;
+            if (!hasObjectInRightHand)
+            {
+                // Grab an object with the right hand
+                RaycastHit hit;
 
-            ballRb.linearVelocity = Vector3.zero;
-            ballRb.mass = 2f;
-            ballRb.AddForce(fpsCamera.transform.forward * throwForce, ForceMode.Impulse);
-            ballRb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-
-            hasBall = false;
+                if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, Mathf.Infinity))
+                {
+                    if (hit.collider.gameObject.CompareTag("PlayerBall"))
+                    {
+                        StartCoroutine(StretchArm(hit.collider.gameObject, rightArm, false));
+                        hasObjectInRightHand = true;
+                    }
+                }
+            }
+            else if (hasObjectInRightHand)
+            {
+                // Throw held object
+                ThrowObject(rightHandHeldObject);
+                hasObjectInRightHand = false;
+            }
         }
+    }
+
+    void ThrowObject(GameObject currentHandHeldGameObject)
+    {
+        currentHandHeldGameObject.transform.parent = null;
+
+        if (currentHandHeldGameObject.GetComponent<Rigidbody>() == null)
+        {
+            Rigidbody heldObjectRB = currentHandHeldGameObject.AddComponent<Rigidbody>();
+            heldObjectRB.linearVelocity = Vector3.zero;
+            heldObjectRB.mass = 2f;
+            heldObjectRB.AddForce(fpsCamera.transform.forward * throwForce, ForceMode.Impulse);
+            heldObjectRB.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+        }
+    }
+
+    IEnumerator StretchArm(GameObject objectToGrab, Transform currentHand, bool isLeftHand)
+    {
+        float t = 0;
+        float duration = 0.05f;
+
+        float defaultLength = currentHand.localScale.z;
+        float targetToGrab = Vector3.Distance(currentHand.position, objectToGrab.transform.position);
+
+        currentHand.LookAt(objectToGrab.transform.position);
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / duration;
+            float length = Mathf.Lerp(defaultLength, targetToGrab, t);
+            currentHand.localScale = new Vector3(currentHand.localScale.x, currentHand.localScale.y, length);
+            yield return null;
+        }
+
+        yield return StartCoroutine(RetractArm(currentHand, objectToGrab, isLeftHand));
+    }
+
+    IEnumerator RetractArm(Transform currentHand, GameObject objectToGrab, bool isLeftHand)
+    {
+        float t = 0;
+        float duration = 0.05f;
+
+        float currentArmLength = currentHand.localScale.z;
+        float startingArmLength = defaultArmLength;
+
+        while (t < 1f)
+        {
+            t += Time.deltaTime / duration;
+            float length = Mathf.Lerp(currentArmLength, startingArmLength, t);
+            currentHand.localScale = new Vector3(currentHand.localScale.x, currentHand.localScale.y, length);
+            yield return null;
+        }
+
+        GrabObject(objectToGrab, isLeftHand);
+    }
+
+    void GrabObject(GameObject grabbedObject, bool isLeftHand)
+    {
+        if (isLeftHand)
+        {
+            leftHandHeldObject = grabbedObject;
+            grabbedObject.transform.parent = leftHandObjectHoldTransform;
+        }
+        else
+        {
+            rightHandHeldObject = grabbedObject;
+            grabbedObject.transform.parent = rightHandObjectHoldTransform;
+        }
+
+        Destroy(grabbedObject.GetComponent<Rigidbody>());
+        grabbedObject.transform.localPosition = Vector3.zero;
+        grabbedObject.transform.localRotation = Quaternion.identity;
     }
 }
