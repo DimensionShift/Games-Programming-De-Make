@@ -5,9 +5,13 @@ public class PlayerHealth : Health
 {
     [SerializeField] Slider healthbarSlider;
 
+    CameraShake cameraShake;
+
     protected override void Start()
     {
         base.Start();
+
+        cameraShake = Camera.main.GetComponent<CameraShake>();
 
         SetHealthToMax();
         UpdateHealthbar();
@@ -22,7 +26,9 @@ public class PlayerHealth : Health
     public override void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
+
         UpdateHealthbar();
+        StartCoroutine(cameraShake.CameraShakeRoutine());
     }
 
     protected override void Die()
