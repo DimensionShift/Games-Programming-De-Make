@@ -23,8 +23,8 @@ public abstract class EnemyAI : MonoBehaviour
 
     protected virtual void Start()
     {
+        player = GameManager.Instance.Player;
         enemyAgent = GetComponent<NavMeshAgent>();
-        player = Player.Instance;
         
         currentState = States.Patrol;
         enemyAgent.speed = moveSpeed;
