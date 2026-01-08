@@ -10,21 +10,25 @@ public enum States
 
 public abstract class EnemyAI : MonoBehaviour
 {
-    [SerializeField] protected float moveSpeed;
-    [SerializeField] protected float runSpeed;
+    [SerializeField] protected float moveSpeed = 5;
+    [SerializeField] protected int contactDamage = 10;
+    [SerializeField] int detectionRadius = 20;
     [SerializeField] BoxCollider patrolArea;
-    [SerializeField] float patrolAreaDuration;
+    [SerializeField] float patrolAreaDuration = 1;
+
+    [field:SerializeField] protected Player player;
+    [field:SerializeField] protected PlayerHealth playerHealth;
 
     protected States currentState;
     protected NavMeshAgent enemyAgent;
-    protected Player player;
 
     bool isWaiting = false;
 
     protected virtual void Start()
     {
-        player = GameManager.Instance.Player;
         enemyAgent = GetComponent<NavMeshAgent>();
+
+        StartCoroutine(FindPlayerReferenceRoutine());
         
         currentState = States.Patrol;
         enemyAgent.speed = moveSpeed;
@@ -38,6 +42,9 @@ public abstract class EnemyAI : MonoBehaviour
         {
             case States.Patrol:
                 Patrol();
+                break;
+            case States.Attack:
+                Attack();
                 break;
             default:
                 currentState = States.Patrol;
@@ -59,6 +66,29 @@ public abstract class EnemyAI : MonoBehaviour
             enemyAgent.ResetPath();
             StartCoroutine(WaitAtPatrolPointRoutine());
         }
+
+        if (player == null || playerHealth.isDead) return;
+
+        if (Vector3.Distance(transform.position, player.transform.position) < detectionRadius)
+        {
+            currentState = States.Attack;
+        }
+    }
+
+    protected virtual void Attack()
+    {
+        if (player == null || playerHealth.isDead) return;
+
+        enemyAgent.ResetPath();
+
+        Vector3 targetPosition = player.transform.position;
+        targetPosition.y = transform.position.y;
+        transform.LookAt(targetPosition);
+
+        if (Vector3.Distance(transform.position, player.transform.position) < detectionRadius)
+        {
+            currentState = States.Patrol;
+        }
     }
 
     protected Vector3 GetRandomPatrolPoint()
@@ -75,4 +105,14 @@ public abstract class EnemyAI : MonoBehaviour
         yield return new WaitForSeconds(patrolAreaDuration);
         isWaiting = false;
     }
+
+    IEnumerator FindPlayerReferenceRoutine()
+    {
+        yield return null;
+
+        player = GameManager.Instance.Player;
+        playerHealth = player.GetComponent<PlayerHealth>();
+    }
+
+    public int GetContactDamage() => contactDamage;
 }
