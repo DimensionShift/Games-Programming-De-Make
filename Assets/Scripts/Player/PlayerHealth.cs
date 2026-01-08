@@ -5,15 +5,11 @@ using UnityEngine.UI;
 public class PlayerHealth : Health
 {
 <<<<<<< HEAD
-<<<<<<< HEAD
     Slider healthbarSlider;
     CameraShake cameraShake;
     SceneLoader sceneLoader;
 
     public bool isDead { get; private set; } = false;
-=======
-    [SerializeField] Slider healthbarSlider;
->>>>>>> parent of 28d1a1b (Adjusted VFX + Added Camera Shake)
 =======
     [SerializeField] Slider healthbarSlider;
 >>>>>>> parent of 28d1a1b (Adjusted VFX + Added Camera Shake)
@@ -23,13 +19,10 @@ public class PlayerHealth : Health
         base.Start();
 
 <<<<<<< HEAD
-<<<<<<< HEAD
         healthbarSlider = GameManager.Instance.GetHealthbar();
         cameraShake = Camera.main.GetComponent<CameraShake>();
         sceneLoader = SceneLoader.Instance;
 
-=======
->>>>>>> parent of 28d1a1b (Adjusted VFX + Added Camera Shake)
 =======
 >>>>>>> parent of 28d1a1b (Adjusted VFX + Added Camera Shake)
         SetHealthToMax();
