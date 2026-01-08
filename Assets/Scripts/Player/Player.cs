@@ -16,9 +16,4 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    void Start()
-    {
-        GameManager.Instance.SetPlayerInstance(this);
-    }
 }

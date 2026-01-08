@@ -1,22 +1,17 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHealth : Health
 {
-    Slider healthbarSlider;
-    CameraShake cameraShake;
-    SceneLoader sceneLoader;
+    [SerializeField] Slider healthbarSlider;
 
-    public bool isDead { get; private set; } = false;
+    CameraShake cameraShake;
 
     protected override void Start()
     {
         base.Start();
 
-        healthbarSlider = GameManager.Instance.GetHealthbar();
         cameraShake = Camera.main.GetComponent<CameraShake>();
-        sceneLoader = SceneLoader.Instance;
 
         SetHealthToMax();
         UpdateHealthbar();
@@ -38,7 +33,7 @@ public class PlayerHealth : Health
 
     protected override void Die()
     {
-        isDead = true;
-        StartCoroutine(GameManager.Instance.RestartGameSceneRoutine());
+        // To Implement once enemies can attack
+        Debug.Log("Player has died");
     }
 }
