@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8445814844986861843}
   - component: {fileID: 6391612045112412313}
   m_Layer: 8
-  m_Name: Cube (1)
+  m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,6 +108,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3785668249320200377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6939815476429488342}
+  m_Layer: 8
+  m_Name: Ball Hold Position
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6939815476429488342
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3785668249320200377}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6655846155455947829}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4002392836862480877
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +152,7 @@ GameObject:
   - component: {fileID: 7292350461490715043}
   - component: {fileID: 9037448662557941552}
   m_Layer: 8
-  m_Name: Cube
+  m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -315,8 +346,9 @@ GameObject:
   - component: {fileID: 6655846155455947829}
   - component: {fileID: 57200165904300419}
   - component: {fileID: 8342571816101212138}
-  - component: {fileID: 7975961790623349013}
+  - component: {fileID: 1041469139760212257}
   - component: {fileID: 6524205148428327643}
+  - component: {fileID: 907849828719144792}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -338,6 +370,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2780095582330772163}
+  - {fileID: 6939815476429488342}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &57200165904300419
@@ -385,7 +418,7 @@ NavMeshAgent:
   m_BaseOffset: -0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7975961790623349013
+--- !u!114 &1041469139760212257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -394,10 +427,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5090531142692627776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e71baca922f747a449f19ed5a0cb51cc, type: 3}
+  m_Script: {fileID: 11500000, guid: db03464ec70630a4fa6dc21e70128645, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   moveSpeed: 5
   runSpeed: 10
   patrolArea: {fileID: 0}
@@ -405,14 +437,6 @@ MonoBehaviour:
   ballPrefab: {fileID: 2186084702021147849, guid: b1c282d3f35091149b9a189bc3553401, type: 3}
   ballHoldTransform: {fileID: 6939815476429488342}
   detectPlayerWaitTime: 3
-=======
-  moveSpeed: 3.5
-  runSpeed: 0
-  patrolPoints: {x: 40, y: 0, z: 40}
-  ballPrefab: {fileID: 0}
-  ballHoldTransform: {fileID: 0}
-  timeBeforeAttacking: 5
->>>>>>> parent of 59e3867 (Refactored Scripts + New Enemy Type)
 --- !u!114 &6524205148428327643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,6 +451,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 0
+  DeathVFX: {fileID: 6677932532846146009, guid: 019e4cedd77fe1949a0eeb9b74944091, type: 3}
+--- !u!114 &907849828719144792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5090531142692627776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf05ff9dc877a554597e7205fc3fb403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 4159333641702546866}
+  flashMaterial: {fileID: 2100000, guid: aae06c71472d5b043924c6c9f6ec6ed7, type: 2}
+  flashDuration: 0.05
 --- !u!1 &6892688558146932788
 GameObject:
   m_ObjectHideFlags: 0
