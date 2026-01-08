@@ -431,12 +431,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  contactDamage: 0
-  detectionRadius: 20
+  runSpeed: 10
   patrolArea: {fileID: 0}
   patrolAreaDuration: 5
-  player: {fileID: 0}
-  playerHealth: {fileID: 0}
   ballPrefab: {fileID: 2186084702021147849, guid: b1c282d3f35091149b9a189bc3553401, type: 3}
   ballHoldTransform: {fileID: 6939815476429488342}
   detectPlayerWaitTime: 3

@@ -16,12 +16,8 @@ public class EnemyHealth : Health
     public override void TakeDamage(int amount)
     {
         base.TakeDamage(amount);
-
-        if (flash != null)
-        {
-            DamageFlash();
-            flashCoroutine = null;
-        }
+        DamageFlash();
+        flashCoroutine = null;
     }
 
     protected override void Die()

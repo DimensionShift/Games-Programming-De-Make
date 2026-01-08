@@ -7,7 +7,6 @@ TagManager:
   - Enemy
   - EnemyBall
   - PlayerBall
-  - Door Key
   layers:
   - Default
   - TransparentFX

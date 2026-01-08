@@ -37,7 +37,7 @@ public class Throwing : MonoBehaviour
 
                 if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, Mathf.Infinity, layerMask))
                 {
-                    if (hit.collider.gameObject.CompareTag("PlayerBall") || hit.collider.gameObject.CompareTag("Door Key"))
+                    if (hit.collider.gameObject.CompareTag("PlayerBall"))
                     {
                         StartCoroutine(StretchArm(hit.collider.gameObject, leftArm, true));
                         hasObjectInLeftHand = true;

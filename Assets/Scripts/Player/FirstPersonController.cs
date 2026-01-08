@@ -22,8 +22,6 @@ public class FirstPersonController : MonoBehaviour
     float verticalVelocity;
     bool isGrounded;
 
-    Vector3 groundCheckPosition;
-
     void Start()
     {
         inputReader = GetComponent<InputReader>();
@@ -35,13 +33,12 @@ public class FirstPersonController : MonoBehaviour
     void Update()
     {
         GroundCheck();
-        Move();
-        CameraMovement();
-        JumpAndGravity();
         
         if (!playerHealth.isDead)
         {
-
+            Move();
+            CameraMovement();
+            JumpAndGravity();
         }
     }
 

@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +9,8 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] List<int> puzzleSolutionSequence = new List<int>();
     [SerializeField] GameObject[] puzzleGameObjects;
 
-    public bool isPuzzleSolved { get ; private set; } = false;
+    public bool isPuzzleSolved {get ; private set;} = false;
     List<int> playerHitSequence = new List<int>();
-
-    public event Action OnPuzzleSolved;
 
     void Awake()
     {
@@ -50,7 +48,6 @@ public class PuzzleManager : MonoBehaviour
             // door open logic
             Debug.Log("Puzzle Solved");
             isPuzzleSolved = true;
-            OnPuzzleSolved?.Invoke();
         }
     }
 
