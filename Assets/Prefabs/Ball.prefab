@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c77215ef65ba4224497908ee7bf8fa17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitVFX: {fileID: 0}
   ballDamage: 20
-  hitVFX: {fileID: 6677932532846146009, guid: 14b4c5a2135f7a7419aead351f5cdd15, type: 3}
 --- !u!54 &-5089684182811457250
 Rigidbody:
   m_ObjectHideFlags: 0
