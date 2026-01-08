@@ -15,7 +15,6 @@ public class FirstPersonController : MonoBehaviour
     InputReader inputReader;
     CharacterController characterController;
     Transform playerCamera;
-    PlayerHealth playerHealth;
 
     const float gravity = -9.81f;
     float verticalRotation;
@@ -26,20 +25,15 @@ public class FirstPersonController : MonoBehaviour
     {
         inputReader = GetComponent<InputReader>();
         characterController = GetComponent<CharacterController>();
-        playerHealth = GetComponent<PlayerHealth>();
         playerCamera = Camera.main.transform;
     }
 
     void Update()
     {
         GroundCheck();
-        
-        if (!playerHealth.isDead)
-        {
-            Move();
-            CameraMovement();
-            JumpAndGravity();
-        }
+        Move();
+        CameraMovement();
+        JumpAndGravity();
     }
 
     void Move()

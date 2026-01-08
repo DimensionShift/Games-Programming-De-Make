@@ -17,7 +17,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         controls.Enable();
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
         controls.Disable();
     }
@@ -40,5 +40,10 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public void OnJump(InputAction.CallbackContext context)
     {
         Jump = context.performed;
+    }
+
+    void OnApplicationFocus(bool focus)
+    {
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
