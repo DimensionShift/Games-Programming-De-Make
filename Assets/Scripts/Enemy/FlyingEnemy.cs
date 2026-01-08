@@ -1,16 +1,47 @@
 using UnityEngine;
 
-public class FlyingEnemy : MonoBehaviour
+public class FlyingEnemy : EnemyAI
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] float runSpeed = 10f;
+
+    protected override void Start()
     {
-        
+        base.Start();
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
-        
+        base.Update();
+
+        switch(currentState)
+        {
+            case States.Attack:
+                Attack();
+                break;
+        }
+    }
+
+    protected override void Patrol()
+    {
+        enemyAgent.speed = moveSpeed;
+
+        base.Patrol();
+    }
+
+    protected override void Attack()
+    {
+        base.Attack();
+
+        enemyAgent.speed = runSpeed;
+        enemyAgent.SetDestination(player.transform.position);
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerHealth.TakeDamage(contactDamage);
+            Destroy(gameObject);
+        }
     }
 }
