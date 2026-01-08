@@ -4,11 +4,14 @@ public class Door : MonoBehaviour
 {
     [SerializeField] bool openDoorForTesting = false;
 
+    public bool isDoorOpened { get; private set; } = false;
+
     PuzzleManager puzzleManager;
 
     void Start()
     {
         puzzleManager = PuzzleManager.Instance;
+        isDoorOpened = false;
     }
 
     void Update()
@@ -27,5 +30,7 @@ public class Door : MonoBehaviour
         {
             lerper.SetCanLerp(true);
         }
+
+        isDoorOpened = true;
     }
 }
