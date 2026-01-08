@@ -57,8 +57,9 @@ public class Throwing : MonoBehaviour
         {
             if (!hasObjectInRightHand)
             {
-                RaycastHit hit;
                 // Grab an object with the right hand
+                RaycastHit hit;
+
                 if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, Mathf.Infinity))
                 {
                     if (hit.collider.gameObject.CompareTag("PlayerBall"))
