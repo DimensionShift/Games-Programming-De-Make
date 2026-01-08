@@ -1,8 +1,9 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour
+public class SceneLoader : MonoBehaviour
 {
-    public static Player Instance;
+    public static SceneLoader Instance;
 
     void Awake()
     {
@@ -17,8 +18,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Start()
+    public void LoadGameScene()
     {
-        GameManager.Instance.SetPlayerInstance(this);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
