@@ -1,10 +1,10 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Throwing : MonoBehaviour
 {
-    [SerializeField] LayerMask layerMask;
     [SerializeField] Transform leftHandObjectHoldTransform;
     [SerializeField] Transform rightHandObjectHoldTransform;
     [SerializeField] Transform leftArm;
@@ -33,9 +33,10 @@ public class Throwing : MonoBehaviour
         {
             if (!hasObjectInLeftHand)
             {
+                // Grab an object with the left hand
                 RaycastHit hit;
 
-                if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, Mathf.Infinity, layerMask))
+                if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, Mathf.Infinity))
                 {
                     if (hit.collider.gameObject.CompareTag("PlayerBall"))
                     {
@@ -46,9 +47,9 @@ public class Throwing : MonoBehaviour
             }
             else if (hasObjectInLeftHand)
             {
+                // Throw held object
                 ThrowObject(leftHandHeldObject);
                 hasObjectInLeftHand = false;
-                leftHandHeldObject = null;
             }
         }
 
@@ -57,8 +58,8 @@ public class Throwing : MonoBehaviour
             if (!hasObjectInRightHand)
             {
                 RaycastHit hit;
-
-                if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, Mathf.Infinity, layerMask))
+                // Grab an object with the right hand
+                if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, Mathf.Infinity))
                 {
                     if (hit.collider.gameObject.CompareTag("PlayerBall"))
                     {
@@ -69,9 +70,9 @@ public class Throwing : MonoBehaviour
             }
             else if (hasObjectInRightHand)
             {
+                // Throw held object
                 ThrowObject(rightHandHeldObject);
                 hasObjectInRightHand = false;
-                rightHandHeldObject = null;
             }
         }
     }

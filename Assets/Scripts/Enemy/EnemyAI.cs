@@ -1,27 +1,31 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum States
+enum States
 {
     Patrol,
-    Attack
+    DetectPlayer,
+    Attack,
+    Run,
 }
 
-public abstract class EnemyAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] protected float moveSpeed;
-    [SerializeField] protected float runSpeed;
-    [SerializeField] BoxCollider patrolArea;
-    [SerializeField] float patrolAreaDuration;
+    [SerializeField] float moveSpeed;
+    [SerializeField] float runSpeed;
+    [SerializeField] Vector3 patrolPoints;
+    [SerializeField] GameObject ballPrefab;
+    [SerializeField] Transform ballHoldTransform;
+    [SerializeField] float timeBeforeAttacking = 5f;
 
-    protected States currentState;
-    protected NavMeshAgent enemyAgent;
-    protected Player player;
+    States currentState;
+    NavMeshAgent enemyAgent;
+    Player player;
 
-    bool isWaiting = false;
+    bool canAttack = true;
+    float timer;
 
-    protected virtual void Start()
+    void Start()
     {
         player = GameManager.Instance.Player;
         enemyAgent = GetComponent<NavMeshAgent>();
@@ -29,15 +33,21 @@ public abstract class EnemyAI : MonoBehaviour
         currentState = States.Patrol;
         enemyAgent.speed = moveSpeed;
 
-        enemyAgent.SetDestination(GetRandomPatrolPoint());
+        timer = timeBeforeAttacking;
     }
 
-    protected virtual void Update()
+    void Update()
     {
         switch(currentState)
         {
             case States.Patrol:
                 Patrol();
+                break;
+            case States.Attack:
+                Attack();
+                break;
+            case States.Run:
+                Run();
                 break;
             default:
                 currentState = States.Patrol;
@@ -45,34 +55,68 @@ public abstract class EnemyAI : MonoBehaviour
         }
     }
 
-    protected virtual void Patrol()
+    void Patrol()
     {
-        if (!enemyAgent.hasPath && !isWaiting)
+        Debug.Log("Enemy has entered Patrol State");
+        enemyAgent.speed = moveSpeed;
+        canAttack = true;
+
+        if (!enemyAgent.hasPath)
         {
-            Vector3 randomPosition = GetRandomPatrolPoint();
+            Vector3 randomPosition = new Vector3(Random.Range(-patrolPoints.x, patrolPoints.x), 0, Random.Range(-patrolPoints.z, patrolPoints.z));
             enemyAgent.SetDestination(randomPosition);
-            isWaiting = true;
         }
 
-        if (enemyAgent.remainingDistance <= enemyAgent.stoppingDistance)
+        if (Vector3.Distance(transform.position, player.transform.position) < 20f)
         {
             enemyAgent.ResetPath();
-            StartCoroutine(WaitAtPatrolPointRoutine());
+            transform.LookAt(player.transform);
+
+            timer -= Time.deltaTime;
+
+            if (timer <= 0)
+            {
+                currentState = States.Attack;
+                timer = timeBeforeAttacking;
+            }
         }
     }
 
-    protected Vector3 GetRandomPatrolPoint()
+    void Attack()
     {
-        Bounds patrolBounds = patrolArea.bounds;
-        Vector3 randomPatrolPosition = new Vector3(Random.Range(patrolBounds.min.x, patrolBounds.max.x), patrolBounds.center.y, Random.Range(patrolBounds.min.z, patrolBounds.max.z));
-        NavMesh.SamplePosition(randomPatrolPosition, out NavMeshHit hit, 2f, NavMesh.AllAreas);
+        Debug.Log("Enemy has entered Attack State");
 
-        return hit.position;
+        // Attack Logic
+        if (canAttack)
+        {
+            GameObject ball = Instantiate(ballPrefab, ballHoldTransform.position, Quaternion.identity);
+            Vector3 distanceToPlayer = (player.transform.position + (Vector3.up * 1f) - ball.transform.position).normalized;
+            ball.GetComponent<Rigidbody>().linearVelocity = distanceToPlayer * 50f;
+
+            Destroy(ball, 5);
+            canAttack = false;
+        }
+        else
+        {
+            currentState = States.Run;
+        }
     }
 
-    IEnumerator WaitAtPatrolPointRoutine()
+    void Run()
     {
-        yield return new WaitForSeconds(patrolAreaDuration);
-        isWaiting = false;
+        Debug.Log("Enemy has entered Run State");
+        enemyAgent.speed = runSpeed;
+
+        if (!enemyAgent.hasPath)
+        {
+            Vector3 randomPosition = new Vector3(Random.Range(-patrolPoints.x, patrolPoints.x), 0, Random.Range(-patrolPoints.z, patrolPoints.z));
+            enemyAgent.SetDestination(randomPosition);
+        }
+
+        if (!enemyAgent.pathPending && enemyAgent.remainingDistance < enemyAgent.stoppingDistance)
+        {
+            enemyAgent.ResetPath();
+            currentState = States.Patrol;
+        }
     }
 }
