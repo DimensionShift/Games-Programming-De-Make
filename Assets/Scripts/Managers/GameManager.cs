@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        SpawnObjects();
+        //SpawnObjects();
     }
 
     void OnEnable()
@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        
         StartCoroutine(FadeManager.Instance.FadeRoutine(0));
         
         foreach (GameObject gameObject in spawnedObjects)

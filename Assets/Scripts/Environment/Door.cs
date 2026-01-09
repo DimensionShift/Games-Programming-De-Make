@@ -16,7 +16,7 @@ public class Door : MonoBehaviour
         GetComponent<BoxCollider>().enabled = true;
     }
 
-    void OnDisable()
+    void OnDestroy()
     {
         puzzleManager.OnPuzzleSolved -= OpenDoors;
     }

@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public static SceneLoader Instance;
+    const string GAME_SCENE_STRING = "GameScene";
 
     void Awake()
     {
@@ -21,5 +22,10 @@ public class SceneLoader : MonoBehaviour
     public void LoadGameScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void PlayButton()
+    {
+        SceneManager.LoadScene(GAME_SCENE_STRING);
     }
 }
