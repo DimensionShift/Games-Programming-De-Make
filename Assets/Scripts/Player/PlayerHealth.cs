@@ -4,11 +4,12 @@ using UnityEngine.UI;
 
 public class PlayerHealth : Health
 {
+    public bool isDead { get; private set; } = false;
+
     Slider healthbarSlider;
     CameraShake cameraShake;
-    SceneLoader sceneLoader;
 
-    public bool isDead { get; private set; } = false;
+    Coroutine cameraShakeCoroutine;
 
     protected override void Start()
     {
@@ -16,7 +17,6 @@ public class PlayerHealth : Health
 
         healthbarSlider = GameManager.Instance.GetHealthbar();
         cameraShake = Camera.main.GetComponent<CameraShake>();
-        sceneLoader = SceneLoader.Instance;
 
         SetHealthToMax();
         UpdateHealthbar();
@@ -33,12 +33,22 @@ public class PlayerHealth : Health
         base.TakeDamage(amount);
 
         UpdateHealthbar();
-        StartCoroutine(cameraShake.CameraShakeRoutine());
+
+        if (cameraShakeCoroutine == null)
+        {
+            cameraShakeCoroutine = StartCoroutine(StartCameraShakeRoutine());
+        }
     }
 
     protected override void Die()
     {
         isDead = true;
         StartCoroutine(GameManager.Instance.RestartGameSceneRoutine());
+    }
+
+    IEnumerator StartCameraShakeRoutine()
+    {
+        yield return StartCoroutine(cameraShake.CameraShakeRoutine());
+        cameraShakeCoroutine = null;
     }
 }
