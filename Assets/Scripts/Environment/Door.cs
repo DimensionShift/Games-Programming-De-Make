@@ -3,6 +3,9 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [SerializeField] bool isDoorOpenedWithKey;
+    [SerializeField] MeshRenderer meshRenderer; 
+    [SerializeField] Material doorLockedMaterial;
+    [SerializeField] Material doorOpenedMaterial;
 
     public bool isDoorOpened { get; private set; } = false;
 
@@ -14,6 +17,7 @@ public class Door : MonoBehaviour
         puzzleManager.OnPuzzleSolved += OpenDoors;
         isDoorOpened = false;
         GetComponent<BoxCollider>().enabled = true;
+        meshRenderer.material = doorLockedMaterial;
     }
 
     void OnDestroy()
@@ -31,6 +35,7 @@ public class Door : MonoBehaviour
         }
 
         isDoorOpened = true;
+        meshRenderer.material = doorOpenedMaterial;
     }
 
     void OnCollisionEnter(Collision collision)
