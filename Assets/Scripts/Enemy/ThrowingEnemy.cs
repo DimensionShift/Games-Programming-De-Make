@@ -10,9 +10,13 @@ public class ThrowingEnemy : EnemyAI
     Coroutine playerDetectedCoroutine;
     bool canAttack;
 
+    PlayerHealth playerHealth;
+
     protected override void Start()
     {
         base.Start();
+
+        playerHealth = player.GetComponent<PlayerHealth>();
     }
 
     protected override void Update()
@@ -31,6 +35,8 @@ public class ThrowingEnemy : EnemyAI
     {
         base.Patrol();
 
+        if (player == null || playerHealth.isDead) return;
+
         if (Vector3.Distance(transform.position, player.transform.position) < 20f)
         {
             currentState = States.Attack;
@@ -39,6 +45,8 @@ public class ThrowingEnemy : EnemyAI
 
     protected void Attack()
     {
+        if (player == null || playerHealth.isDead) return;
+        
         enemyAgent.ResetPath();
         transform.LookAt(player.transform);
 
