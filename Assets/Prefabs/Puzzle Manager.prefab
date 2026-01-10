@@ -45,8 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleSolutionSequence: 04000000020000000300000001000000
-  puzzleGameObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  puzzleGameObjects: []

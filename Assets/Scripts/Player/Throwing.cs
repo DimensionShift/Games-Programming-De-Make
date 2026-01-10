@@ -37,7 +37,7 @@ public class Throwing : MonoBehaviour
 
                 if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, Mathf.Infinity, layerMask))
                 {
-                    if (hit.collider.gameObject.CompareTag("PlayerBall") || hit.collider.gameObject.CompareTag("Door Key"))
+                    if (hit.collider.gameObject.CompareTag("PlayerBall") || hit.collider.gameObject.CompareTag("Door Key") || hit.collider.gameObject.CompareTag("Health Potion"))
                     {
                         StartCoroutine(StretchArm(hit.collider.gameObject, leftArm, true));
                         hasObjectInLeftHand = true;
@@ -60,7 +60,7 @@ public class Throwing : MonoBehaviour
 
                 if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, Mathf.Infinity, layerMask))
                 {
-                    if (hit.collider.gameObject.CompareTag("PlayerBall"))
+                    if (hit.collider.gameObject.CompareTag("PlayerBall") || hit.collider.gameObject.CompareTag("Health Potion"))
                     {
                         StartCoroutine(StretchArm(hit.collider.gameObject, rightArm, false));
                         hasObjectInRightHand = true;
@@ -80,7 +80,11 @@ public class Throwing : MonoBehaviour
     {
         currentHandHeldGameObject.transform.parent = null;
 
-        if (currentHandHeldGameObject.GetComponent<Rigidbody>() == null)
+        if (currentHandHeldGameObject.GetComponent<HealthPotion>())
+        {
+            currentHandHeldGameObject.GetComponent<HealthPotion>().RestoreHealth();
+        }
+        else if (currentHandHeldGameObject.GetComponent<Rigidbody>() == null)
         {
             Rigidbody heldObjectRB = currentHandHeldGameObject.AddComponent<Rigidbody>();
             heldObjectRB.linearVelocity = Vector3.zero;

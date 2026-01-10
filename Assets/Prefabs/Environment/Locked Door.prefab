@@ -154,6 +154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDoorOpenedWithKey: 1
+  meshRenderer: {fileID: 4805381026461548716}
+  doorLockedMaterial: {fileID: 2100000, guid: 1cbce9e9023d2d047afd8e72cfb9c5a6, type: 2}
+  doorOpenedMaterial: {fileID: 2100000, guid: 834c691920116144ca972cf29203b1a8, type: 2}
 --- !u!1 &3549787971169859235
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,7 +917,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 3447
+  m_VersionIndex: 3456
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -1200,7 +1203,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 5e0aaa984d88c1541a3226b7e10ccb4e, type: 2}
+  - {fileID: 2100000, guid: 1cbce9e9023d2d047afd8e72cfb9c5a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

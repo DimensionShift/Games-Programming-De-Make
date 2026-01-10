@@ -8,6 +8,8 @@ TagManager:
   - EnemyBall
   - PlayerBall
   - Door Key
+  - Health Potion
+  - Environment
   layers:
   - Default
   - TransparentFX

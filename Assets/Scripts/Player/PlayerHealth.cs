@@ -40,6 +40,20 @@ public class PlayerHealth : Health
         }
     }
 
+    public void RestoreHealth(int amount)
+    {
+        if (currentHealth + amount > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        else
+        {
+            currentHealth += amount;
+        }
+
+        UpdateHealthbar();
+    }
+
     protected override void Die()
     {
         isDead = true;
