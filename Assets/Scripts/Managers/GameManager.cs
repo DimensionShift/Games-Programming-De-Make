@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] Vector3[] ballSpawnPositions;
 
     List<GameObject> spawnedObjects = new List<GameObject>();
-
     public Player Player { get; private set; }
 
     void Awake()
@@ -69,6 +68,9 @@ public class GameManager : MonoBehaviour
         }
 
         SpawnObjects();
+
+        PuzzleManager.Instance.ClearPuzzleObjects();
+        PuzzleManager.Instance.RestartPuzzle();
     }
 
     void SpawnObjects()

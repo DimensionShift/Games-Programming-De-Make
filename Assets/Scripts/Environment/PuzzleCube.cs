@@ -21,10 +21,13 @@ public class PuzzleCube : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
 
         defaultMaterial = meshRenderer.material;
-        defaultMaterial.color = Color.black;
 
         isHit = false;
         isLerping = false;
+
+        ResetCube();
+
+        puzzleManager.AddToPuzzleObjects(gameObject);
     }
 
     void Update()
@@ -47,7 +50,6 @@ public class PuzzleCube : MonoBehaviour
 
     public void ResetCube()
     {
-        defaultMaterial.color = Color.black;
         meshRenderer.material = defaultMaterial;
         elapsedTime = 0f;
         isHit = false;

@@ -1117,11 +1117,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4724616973728622955, guid: a21e470153507bb42ac808b2ba099a45, type: 3}
       propertyPath: m_text
-      value: "\u2191"
+      value: ^
       objectReference: {fileID: 0}
     - target: {fileID: 4724616973728622955, guid: a21e470153507bb42ac808b2ba099a45, type: 3}
       propertyPath: m_fontSize
-      value: 36
+      value: 44.1
       objectReference: {fileID: 0}
     - target: {fileID: 5766993122144055644, guid: a21e470153507bb42ac808b2ba099a45, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -34735,7 +34735,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f4b7b595bc6967545a9c39d72e77e51c, type: 2}
+  - {fileID: 2100000, guid: c24cc98f780f2ca469d1e29d6c6d6938, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -42583,7 +42583,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f4b7b595bc6967545a9c39d72e77e51c, type: 2}
+  - {fileID: 2100000, guid: 2d459a89f33d06e44b2c5e53182af36b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -45328,6 +45328,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2633116603500508256, guid: 53033561e397c5a479cca54dbc820bd1, type: 3}
+      propertyPath: puzzleGameObjects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2633116603500508256, guid: 53033561e397c5a479cca54dbc820bd1, type: 3}
       propertyPath: 'puzzleGameObjects.Array.data[0]'
       value: 
@@ -56123,7 +56127,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f4b7b595bc6967545a9c39d72e77e51c, type: 2}
+  - {fileID: 2100000, guid: 1f539488c535a314aae0e23053c47d6c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -56156,6 +56160,10 @@ PrefabInstance:
     - target: {fileID: 987559733099840730, guid: bcda33f3219de164abee5ad36c90da17, type: 3}
       propertyPath: m_Name
       value: Locked Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 987559733099840730, guid: bcda33f3219de164abee5ad36c90da17, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6350137422125754189, guid: bcda33f3219de164abee5ad36c90da17, type: 3}
       propertyPath: m_Mesh
@@ -58543,7 +58551,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f4b7b595bc6967545a9c39d72e77e51c, type: 2}
+  - {fileID: 2100000, guid: 274f0b74043edcd42a470874d7b401b7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

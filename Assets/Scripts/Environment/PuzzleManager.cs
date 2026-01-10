@@ -7,9 +7,10 @@ public class PuzzleManager : MonoBehaviour
     public static PuzzleManager Instance;
 
     [SerializeField] List<int> puzzleSolutionSequence = new List<int>();
-    [SerializeField] GameObject[] puzzleGameObjects;
-
+    //[SerializeField] GameObject[] puzzleGameObjects;
     public bool isPuzzleSolved { get ; private set; } = false;
+    
+    [field:SerializeField] List<GameObject> puzzleGameObjects = new List<GameObject>();
     List<int> playerHitSequence = new List<int>();
 
     public event Action OnPuzzleSolved;
@@ -29,7 +30,7 @@ public class PuzzleManager : MonoBehaviour
 
     void Start()
     {
-        isPuzzleSolved = false;
+        RestartPuzzle();
     }
 
     public void CubeHit(int hitCube)
@@ -47,16 +48,14 @@ public class PuzzleManager : MonoBehaviour
 
         if (playerHitSequence.Count == puzzleSolutionSequence.Count)
         {
-            // door open logic
-            Debug.Log("Puzzle Solved");
             isPuzzleSolved = true;
             OnPuzzleSolved?.Invoke();
         }
     }
 
-    void RestartPuzzle()
+    public void RestartPuzzle()
     {
-        Debug.Log("Puzzle Restarted");
+        isPuzzleSolved = false;
         playerHitSequence.Clear();
 
         foreach(GameObject gameObject in puzzleGameObjects)
@@ -66,4 +65,14 @@ public class PuzzleManager : MonoBehaviour
     }
 
     public bool PuzzleSolved => isPuzzleSolved;
+
+    public void AddToPuzzleObjects(GameObject puzzleCube)
+    {
+        puzzleGameObjects.Add(puzzleCube);
+    }
+
+    public void ClearPuzzleObjects()
+    {
+        puzzleGameObjects.Clear();
+    }
 }
