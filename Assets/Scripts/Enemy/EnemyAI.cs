@@ -94,7 +94,8 @@ public abstract class EnemyAI : MonoBehaviour
     protected Vector3 GetRandomPatrolPoint()
     {
         Bounds patrolBounds = patrolArea.bounds;
-        Vector3 randomPatrolPosition = new Vector3(Random.Range(patrolBounds.min.x, patrolBounds.max.x), patrolBounds.center.y, Random.Range(patrolBounds.min.z, patrolBounds.max.z));
+        Vector3 randomPatrolPosition = new Vector3(Random.Range(patrolBounds.min.x, patrolBounds.max.x), 
+                                       patrolBounds.center.y, Random.Range(patrolBounds.min.z, patrolBounds.max.z));
         NavMesh.SamplePosition(randomPatrolPosition, out NavMeshHit hit, 2f, NavMesh.AllAreas);
 
         return hit.position;

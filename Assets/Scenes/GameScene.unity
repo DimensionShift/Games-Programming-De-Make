@@ -4631,6 +4631,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4631879157406299771, guid: 23c6b99c0bf95dc46bdc88351eeba178, type: 3}
+      propertyPath: shakeForce
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4631879157406299771, guid: 23c6b99c0bf95dc46bdc88351eeba178, type: 3}
+      propertyPath: shakeDuration
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732264198018479180, guid: 23c6b99c0bf95dc46bdc88351eeba178, type: 3}
+      propertyPath: throwForce
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4732264198018479180, guid: 23c6b99c0bf95dc46bdc88351eeba178, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 631
+      objectReference: {fileID: 0}
     - target: {fileID: 5032759698994856046, guid: 23c6b99c0bf95dc46bdc88351eeba178, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4671,6 +4687,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6070892849184564227, guid: 23c6b99c0bf95dc46bdc88351eeba178, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 26b8da8d978803a4e891dbd5f4770784, type: 2}
+    - target: {fileID: 8738522354172400049, guid: 23c6b99c0bf95dc46bdc88351eeba178, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 26b8da8d978803a4e891dbd5f4770784, type: 2}
+    - target: {fileID: 8777797773808492594, guid: 23c6b99c0bf95dc46bdc88351eeba178, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 26b8da8d978803a4e891dbd5f4770784, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6292,6 +6320,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Flying Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7446256962592697383, guid: d0c09dabc0095c34091e726634cb502a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8064285540703462945, guid: d0c09dabc0095c34091e726634cb502a, type: 3}
       propertyPath: maxHealth
       value: 20
@@ -6365,6 +6397,10 @@ PrefabInstance:
     - target: {fileID: 5090531142692627776, guid: 39b0aa7c2abbf6e41a7c44b1f9cd847d, type: 3}
       propertyPath: m_Name
       value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5090531142692627776, guid: 39b0aa7c2abbf6e41a7c44b1f9cd847d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6524205148428327643, guid: 39b0aa7c2abbf6e41a7c44b1f9cd847d, type: 3}
       propertyPath: maxHealth
@@ -46365,6 +46401,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4785937050261330089, guid: 57ea2fcfda562044f96b9d709e3f28f0, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785937050261330089, guid: 57ea2fcfda562044f96b9d709e3f28f0, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4785937050261330089, guid: 57ea2fcfda562044f96b9d709e3f28f0, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5331050281140713248, guid: 57ea2fcfda562044f96b9d709e3f28f0, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -46443,6 +46491,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5331050281140713248, guid: 57ea2fcfda562044f96b9d709e3f28f0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302710532735046593, guid: 57ea2fcfda562044f96b9d709e3f28f0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.19533336
+      objectReference: {fileID: 0}
+    - target: {fileID: 6302710532735046593, guid: 57ea2fcfda562044f96b9d709e3f28f0, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7174510033487683480, guid: 57ea2fcfda562044f96b9d709e3f28f0, type: 3}

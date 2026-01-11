@@ -58,9 +58,9 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        
         StartCoroutine(FadeManager.Instance.FadeRoutine(0));
+        
+        Cursor.lockState = CursorLockMode.Locked;
         
         foreach (GameObject gameObject in spawnedObjects)
         {

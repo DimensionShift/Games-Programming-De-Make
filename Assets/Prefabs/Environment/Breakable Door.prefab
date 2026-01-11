@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6484653738959852673}
   - component: {fileID: 2735027090776693208}
   - component: {fileID: 6217413354021234671}
+  - component: {fileID: 8665569826365542142}
   m_Layer: 0
   m_Name: Breakable Door
   m_TagString: Environment
@@ -67,6 +68,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66753c1f344d79b46904a5e3b17bfa1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8665569826365542142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893403581596963604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf05ff9dc877a554597e7205fc3fb403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 5925808441040430134}
+  flashMaterial: {fileID: 2100000, guid: 9140114a6a1c8e44db826ce4e6f44158, type: 2}
+  flashDuration: 0.05
 --- !u!1 &4436622845243752343
 GameObject:
   m_ObjectHideFlags: 0

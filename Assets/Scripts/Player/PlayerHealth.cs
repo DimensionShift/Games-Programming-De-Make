@@ -54,7 +54,7 @@ public class PlayerHealth : Health
         UpdateHealthbar();
     }
 
-    protected override void Die()
+    public override void Die()
     {
         isDead = true;
         StartCoroutine(GameManager.Instance.RestartGameSceneRoutine());

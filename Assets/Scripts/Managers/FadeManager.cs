@@ -26,9 +26,11 @@ public class FadeManager : MonoBehaviour
     {
         while (!Mathf.Approximately(fadeImage.color.a, targetValue))
         {
+            fadeImage.enabled = true;
             float alpha = Mathf.MoveTowards(fadeImage.color.a, targetValue, fadeSpeed * Time.deltaTime);
             fadeImage.color = new Color(fadeImage.color.r, fadeImage.color.g, fadeImage.color.b, alpha);
             yield return null;
+            fadeImage.enabled = false;
         }
     }
 }

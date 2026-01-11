@@ -3,6 +3,7 @@ using UnityEngine;
 public class FlyingEnemy : EnemyAI
 {
     [SerializeField] float runSpeed = 10f;
+    [SerializeField] GameObject deathVFX;
 
     protected override void Start()
     {
@@ -41,7 +42,7 @@ public class FlyingEnemy : EnemyAI
         if (other.CompareTag("Player"))
         {
             playerHealth.TakeDamage(contactDamage);
-            Destroy(gameObject);
+            GetComponent<EnemyHealth>().Die();
         }
     }
 }

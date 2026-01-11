@@ -88,7 +88,9 @@ public class Throwing : MonoBehaviour
         {
             Rigidbody heldObjectRB = currentHandHeldGameObject.AddComponent<Rigidbody>();
             heldObjectRB.linearVelocity = Vector3.zero;
-            heldObjectRB.mass = 2f;
+            heldObjectRB.mass = 1;
+            heldObjectRB.linearDamping = 1;
+            heldObjectRB.angularDamping = 2;
             heldObjectRB.AddForce(fpsCamera.transform.forward * throwForce, ForceMode.Impulse);
             heldObjectRB.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
         }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Breakable : MonoBehaviour
@@ -6,7 +7,13 @@ public class Breakable : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PlayerBall"))
         {
-            Destroy(gameObject);
+            StartCoroutine(DestroyObjectRoutine());
         }
+    }
+
+    IEnumerator DestroyObjectRoutine()
+    {
+        yield return StartCoroutine(GetComponent<Flash>().FlashRoutine());
+        Destroy(gameObject);
     }
 }

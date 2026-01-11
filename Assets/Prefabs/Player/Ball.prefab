@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 339486302339267079}
   - component: {fileID: 4858004144432651712}
   - component: {fileID: 4020190431162722795}
-  - component: {fileID: 8655908502130241671}
   - component: {fileID: -5089684182811457250}
+  - component: {fileID: 8655908502130241671}
+  - component: {fileID: -1251793798053240371}
   m_Layer: 9
   m_Name: Ball
   m_TagString: PlayerBall
@@ -110,20 +111,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8655908502130241671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2186084702021147849}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c77215ef65ba4224497908ee7bf8fa17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ballDamage: 20
-  hitVFX: {fileID: 6677932532846146009, guid: 14b4c5a2135f7a7419aead351f5cdd15, type: 3}
 --- !u!54 &-5089684182811457250
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -134,7 +121,7 @@ Rigidbody:
   serializedVersion: 4
   m_Mass: 2
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -151,3 +138,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
+--- !u!114 &8655908502130241671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2186084702021147849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77215ef65ba4224497908ee7bf8fa17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballDamage: 25
+  hitVFX: {fileID: 6677932532846146009, guid: 14b4c5a2135f7a7419aead351f5cdd15, type: 3}
+--- !u!114 &-1251793798053240371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2186084702021147849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf05ff9dc877a554597e7205fc3fb403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 4858004144432651712}
+  flashMaterial: {fileID: 2100000, guid: 5e0aaa984d88c1541a3226b7e10ccb4e, type: 2}
+  flashDuration: 0.05

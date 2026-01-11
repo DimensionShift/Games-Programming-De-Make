@@ -24,7 +24,7 @@ public class EnemyHealth : Health
         }
     }
 
-    protected override void Die()
+    public override void Die()
     {
         Instantiate(DeathVFX, transform.position, Quaternion.identity);
         Destroy(gameObject);

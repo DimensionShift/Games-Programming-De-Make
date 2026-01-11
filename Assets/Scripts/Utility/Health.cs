@@ -25,5 +25,5 @@ public abstract class Health : MonoBehaviour
         }
     }
 
-    protected abstract void Die();
+    public abstract void Die();
 }

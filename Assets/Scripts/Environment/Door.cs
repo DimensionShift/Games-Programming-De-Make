@@ -22,7 +22,10 @@ public class Door : MonoBehaviour
 
     void OnDestroy()
     {
-        puzzleManager.OnPuzzleSolved -= OpenDoors;
+        if (puzzleManager != null)
+        {
+            puzzleManager.OnPuzzleSolved -= OpenDoors;
+        }
     }
 
     public void OpenDoors()

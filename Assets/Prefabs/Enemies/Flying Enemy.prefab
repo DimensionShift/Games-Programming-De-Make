@@ -262,7 +262,8 @@ MonoBehaviour:
   patrolAreaDuration: 2
   player: {fileID: 0}
   playerHealth: {fileID: 0}
-  runSpeed: 20
+  runSpeed: 15
+  deathVFX: {fileID: 0}
 --- !u!114 &8064285540703462945
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,15 +2,17 @@ using UnityEngine;
 
 public class FirstPersonController : MonoBehaviour
 {
+    [Header("Controller Variables")]
     [SerializeField] float moveSpeed;
     [SerializeField] float sprintSpeed;
-    [SerializeField] float sensitivity;
-    [SerializeField] float topClamp = 80f;
-    [SerializeField] float bottomClamp = -60f;
     [SerializeField] float groundCheckOffset;
     [SerializeField] float groundCheckRadius;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] float jumpHeight;
+    [Header("Camera Variables")]
+    [SerializeField] float sensitivity;
+    [SerializeField] float topClamp = 80f;
+    [SerializeField] float bottomClamp = -60f;
 
     InputReader inputReader;
     CharacterController characterController;
@@ -21,8 +23,6 @@ public class FirstPersonController : MonoBehaviour
     float verticalRotation;
     float verticalVelocity;
     bool isGrounded;
-
-    Vector3 groundCheckPosition;
 
     void Start()
     {
@@ -35,13 +35,12 @@ public class FirstPersonController : MonoBehaviour
     void Update()
     {
         GroundCheck();
-        Move();
-        CameraMovement();
-        JumpAndGravity();
         
         if (!playerHealth.isDead)
         {
-
+            Move();
+            CameraMovement();
+            JumpAndGravity();
         }
     }
 
