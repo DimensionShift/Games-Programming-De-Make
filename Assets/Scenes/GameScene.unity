@@ -3385,7 +3385,7 @@ Mesh:
     m_Center: {x: 0, y: 5.5, z: 0}
     m_Extent: {x: 24.5, y: 6, z: 24.5}
   m_MeshUsageFlags: 0
-  m_CookingOptions: 30
+  m_CookingOptions: 0
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   'm_MeshMetrics[0]': 1
