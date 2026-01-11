@@ -84,16 +84,6 @@ public class Throwing : MonoBehaviour
         {
             currentHandHeldGameObject.GetComponent<HealthPotion>().RestoreHealth();
         }
-        // else if (currentHandHeldGameObject.GetComponent<Rigidbody>() == null)
-        // {
-        //     Rigidbody heldObjectRB = currentHandHeldGameObject.AddComponent<Rigidbody>();
-        //     heldObjectRB.linearVelocity = Vector3.zero;
-        //     heldObjectRB.mass = 1;
-        //     heldObjectRB.linearDamping = 1;
-        //     heldObjectRB.angularDamping = 2;
-        //     heldObjectRB.AddForce(fpsCamera.transform.forward * throwForce, ForceMode.Impulse);
-        //     heldObjectRB.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
-        // }
         else
         {
             Rigidbody heldObjectRB = currentHandHeldGameObject.GetComponent<Rigidbody>();
