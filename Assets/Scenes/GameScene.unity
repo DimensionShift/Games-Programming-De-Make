@@ -2406,6 +2406,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Breakable Door
       objectReference: {fileID: 0}
+    - target: {fileID: 4436622845243752343, guid: 1b35fa929baa8364ea82590e7091ab09, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6484653738959852673, guid: 1b35fa929baa8364ea82590e7091ab09, type: 3}
       propertyPath: m_LocalPosition.x
       value: -24
