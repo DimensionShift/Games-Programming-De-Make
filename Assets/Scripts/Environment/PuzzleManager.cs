@@ -7,7 +7,7 @@ public class PuzzleManager : MonoBehaviour
     public static PuzzleManager Instance;
 
     [SerializeField] List<int> puzzleSolutionSequence = new List<int>();
-    //[SerializeField] GameObject[] puzzleGameObjects;
+    
     public bool isPuzzleSolved { get ; private set; } = false;
     
     [field:SerializeField] List<GameObject> puzzleGameObjects = new List<GameObject>();

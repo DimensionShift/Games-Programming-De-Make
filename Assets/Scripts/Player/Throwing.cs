@@ -84,15 +84,22 @@ public class Throwing : MonoBehaviour
         {
             currentHandHeldGameObject.GetComponent<HealthPotion>().RestoreHealth();
         }
-        else if (currentHandHeldGameObject.GetComponent<Rigidbody>() == null)
+        // else if (currentHandHeldGameObject.GetComponent<Rigidbody>() == null)
+        // {
+        //     Rigidbody heldObjectRB = currentHandHeldGameObject.AddComponent<Rigidbody>();
+        //     heldObjectRB.linearVelocity = Vector3.zero;
+        //     heldObjectRB.mass = 1;
+        //     heldObjectRB.linearDamping = 1;
+        //     heldObjectRB.angularDamping = 2;
+        //     heldObjectRB.AddForce(fpsCamera.transform.forward * throwForce, ForceMode.Impulse);
+        //     heldObjectRB.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+        // }
+        else
         {
-            Rigidbody heldObjectRB = currentHandHeldGameObject.AddComponent<Rigidbody>();
-            heldObjectRB.linearVelocity = Vector3.zero;
-            heldObjectRB.mass = 1;
-            heldObjectRB.linearDamping = 1;
-            heldObjectRB.angularDamping = 2;
+            Rigidbody heldObjectRB = currentHandHeldGameObject.GetComponent<Rigidbody>();
+            heldObjectRB.useGravity = true;
+            heldObjectRB.isKinematic = false;
             heldObjectRB.AddForce(fpsCamera.transform.forward * throwForce, ForceMode.Impulse);
-            heldObjectRB.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
         }
     }
 
@@ -149,7 +156,13 @@ public class Throwing : MonoBehaviour
             grabbedObject.transform.parent = rightHandObjectHoldTransform;
         }
 
-        Destroy(grabbedObject.GetComponent<Rigidbody>());
+        if (grabbedObject.GetComponent<Rigidbody>())
+        {
+            Rigidbody heldObjectRB = grabbedObject.GetComponent<Rigidbody>();
+            heldObjectRB.useGravity = false;
+            heldObjectRB.isKinematic = true;
+        }
+
         grabbedObject.transform.localPosition = Vector3.zero;
         grabbedObject.transform.localRotation = Quaternion.identity;
     }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2306975157911926012}
   - component: {fileID: 4943056437453845464}
   - component: {fileID: 8326506344011182526}
+  - component: {fileID: 8870139155540492562}
   m_Layer: 0
   m_Name: Throwable Object
   m_TagString: PlayerBall
@@ -68,7 +69,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
-  hitVFX: {fileID: 6677932532846146009, guid: 14b4c5a2135f7a7419aead351f5cdd15, type: 3}
+--- !u!54 &8870139155540492562
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8456408123754177114}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 1
+  m_AngularDrag: 2
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 3
 --- !u!1 &8707816103402206828
 GameObject:
   m_ObjectHideFlags: 0
