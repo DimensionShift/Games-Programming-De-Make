@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8665569826365542142}
   m_Layer: 0
   m_Name: Breakable Door
-  m_TagString: Environment
+  m_TagString: Breakable Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

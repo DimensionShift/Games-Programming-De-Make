@@ -6,7 +6,7 @@ public class Throwable : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Environment"))
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Breakable Door"))
         {
             collision.gameObject.GetComponent<EnemyHealth>()?.TakeDamage(damage);
             Destroy(gameObject);
