@@ -4995,6 +4995,10 @@ PrefabInstance:
       propertyPath: detectionRadius
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 1041469139760212257, guid: 39b0aa7c2abbf6e41a7c44b1f9cd847d, type: 3}
+      propertyPath: detectPlayerWaitTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5090531142692627776, guid: 39b0aa7c2abbf6e41a7c44b1f9cd847d, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -6214,6 +6218,10 @@ PrefabInstance:
       propertyPath: patrolArea
       value: 
       objectReference: {fileID: 1352727124}
+    - target: {fileID: 1041469139760212257, guid: 39b0aa7c2abbf6e41a7c44b1f9cd847d, type: 3}
+      propertyPath: detectPlayerWaitTime
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5090531142692627776, guid: 39b0aa7c2abbf6e41a7c44b1f9cd847d, type: 3}
       propertyPath: m_Name
       value: Enemy
