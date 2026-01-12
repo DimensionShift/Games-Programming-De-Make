@@ -19,10 +19,6 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.CompareTag("Environment") || collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Puzzle Cube"))
         {
             audioSource.Play();
-        }
-
-        if (!collision.gameObject.CompareTag("Player"))
-        {
             Instantiate(hitVFX, transform.position, Quaternion.identity);
         }
 
