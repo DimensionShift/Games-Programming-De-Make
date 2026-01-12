@@ -14,9 +14,12 @@ public class Ball : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        audioSource.Play();
-        
         StartCoroutine(GetComponent<Flash>().FlashRoutine());
+
+        if (collision.gameObject.CompareTag("Environment") || collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Puzzle Cube"))
+        {
+            audioSource.Play();
+        }
 
         if (!collision.gameObject.CompareTag("Player"))
         {

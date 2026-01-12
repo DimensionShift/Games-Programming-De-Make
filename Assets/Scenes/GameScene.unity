@@ -3000,8 +3000,8 @@ MonoBehaviour:
   playerHealthbar: {fileID: 261986979}
   ballPrefab: {fileID: 2186084702021147849, guid: 57f27b8bbcca21b4a98aa35400660f39, type: 3}
   ballSpawnPositions:
-  - {x: -2.5, y: 1.25, z: 6.5}
-  - {x: 2.5, y: 1.25, z: 6.5}
+  - {x: -2.5, y: 1.5, z: 6.5}
+  - {x: 2.5, y: 1.5, z: 6.5}
 --- !u!4 &1008024830
 Transform:
   m_ObjectHideFlags: 0
@@ -3385,7 +3385,7 @@ Mesh:
     m_Center: {x: 0, y: 5.5, z: 0}
     m_Extent: {x: 24.5, y: 6, z: 24.5}
   m_MeshUsageFlags: 0
-  m_CookingOptions: 0
+  m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   'm_MeshMetrics[0]': 1
@@ -47984,7 +47984,7 @@ GameObject:
   - component: {fileID: 995084718105685665}
   m_Layer: 0
   m_Name: Yellow Puzzle Cube
-  m_TagString: Untagged
+  m_TagString: Puzzle Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -53090,7 +53090,7 @@ GameObject:
   - component: {fileID: 7236755634400933118}
   m_Layer: 0
   m_Name: Green Puzzle Cube
-  m_TagString: Untagged
+  m_TagString: Puzzle Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58402,7 +58402,7 @@ GameObject:
   - component: {fileID: 982566239664652149}
   m_Layer: 0
   m_Name: Blue Puzzle Cube
-  m_TagString: Untagged
+  m_TagString: Puzzle Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -59524,7 +59524,7 @@ GameObject:
   - component: {fileID: 7538210390803938527}
   m_Layer: 0
   m_Name: Red Puzzle Cube
-  m_TagString: Untagged
+  m_TagString: Puzzle Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

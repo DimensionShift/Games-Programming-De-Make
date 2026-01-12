@@ -10,6 +10,7 @@ TagManager:
   - Door Key
   - Health Potion
   - Environment
+  - Puzzle Cube
   layers:
   - Default
   - TransparentFX
