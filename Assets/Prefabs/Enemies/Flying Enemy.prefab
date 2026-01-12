@@ -128,12 +128,13 @@ GameObject:
   m_Component:
   - component: {fileID: 8607073376115670103}
   - component: {fileID: 8593104582559330573}
-  - component: {fileID: 3937789656044529450}
+  - component: {fileID: 7386236697370236045}
   - component: {fileID: 1554102440180951822}
   - component: {fileID: 145304920400073178}
   - component: {fileID: 6956725887648851758}
   - component: {fileID: 8064285540703462945}
   - component: {fileID: 6794394155119665947}
+  - component: {fileID: 24266616966797768}
   m_Layer: 8
   m_Name: Flying Enemy
   m_TagString: Enemy
@@ -178,7 +179,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.4
   m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &3937789656044529450
+--- !u!135 &7386236697370236045
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -257,7 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   contactDamage: 30
-  detectionRadius: 30
+  detectionRadius: 20
   patrolArea: {fileID: 0}
   patrolAreaDuration: 2
   player: {fileID: 0}
@@ -276,10 +277,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8a6da2f5a7ed54bb4333b8eab8b10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 25
   currentHealth: 0
   DeathVFX: {fileID: 6677932532846146009, guid: 019e4cedd77fe1949a0eeb9b74944091, type: 3}
 --- !u!114 &6794394155119665947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7446256962592697383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf05ff9dc877a554597e7205fc3fb403, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 2926523792163879982}
+  flashMaterial: {fileID: 2100000, guid: aae06c71472d5b043924c6c9f6ec6ed7, type: 2}
+  flashDuration: 0.05
+--- !u!114 &24266616966797768
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

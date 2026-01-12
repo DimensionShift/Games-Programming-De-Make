@@ -432,14 +432,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   contactDamage: 0
-  detectionRadius: 20
+  detectionRadius: 30
   patrolArea: {fileID: 0}
   patrolAreaDuration: 5
   player: {fileID: 0}
   playerHealth: {fileID: 0}
   ballPrefab: {fileID: 2186084702021147849, guid: b1c282d3f35091149b9a189bc3553401, type: 3}
   ballHoldTransform: {fileID: 6939815476429488342}
-  detectPlayerWaitTime: 3
+  detectPlayerWaitTime: 2
 --- !u!114 &6524205148428327643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8a6da2f5a7ed54bb4333b8eab8b10e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 75
   currentHealth: 0
   DeathVFX: {fileID: 6677932532846146009, guid: 019e4cedd77fe1949a0eeb9b74944091, type: 3}
 --- !u!114 &907849828719144792
